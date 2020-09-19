@@ -47,6 +47,34 @@ export class StopwatchComponent implements OnInit, OnDestroy {
     });
   }
 
+  stopTimer() {
+    (this.hours = '00'), (this.minutes = '00'), (this.seconds = '00');
+    this.num = 0;
+    this.timerService.stop();
+    this.isStarted = true;
+    this.isPaused = true;
+    this.timer.unsubscribe();
+  }
+
+  pauseTimer() {
+    if (!this.isStarted) {
+      if (this.isPaused) {
+        this.timerService.stop();
+        this.isPaused = false;
+      } else {
+        this.timerService.start();
+        this.isPaused = true;
+      }
+    }
+  }
+
+  resetTimer() {
+    if (!this.isStarted) {
+      this.stopTimer();
+      this.startTimer();
+    }
+  }
+
   ngOnDestroy() {
     this.timer.unsubscribe();
   }
