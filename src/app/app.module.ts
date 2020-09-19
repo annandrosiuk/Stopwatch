@@ -7,11 +7,13 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { StopwatchComponent } from './stopwatch/stopwatch.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StopwatchComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

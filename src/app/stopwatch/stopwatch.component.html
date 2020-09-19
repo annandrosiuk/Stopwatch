@@ -1,17 +1,17 @@
 <div class="stopwatch">
-  <div class="stopwatch-label">
+  <div class="stopwatch-label" [ngClass]="{blink: !isPaused}">
     <span>{{ hours }}:</span>
     <span>{{ minutes }}:</span>
     <span>{{ seconds }}</span>
   </div>
   <div class="stopwatch-button-container">
-    <button mat-raised-button *ngIf="isStarted; else stop" (click)="startTimer()">
+    <button class="stopwatch-button" mat-raised-button *ngIf="isStarted; else stop" (click)="startTimer()">
       Start
     </button>
     <ng-template #stop>
-      <button mat-raised-button>Stop</button>
+      <button class="stopwatch-button" mat-raised-button (click)="stopTimer()">Stop</button>
     </ng-template>
-    <button mat-raised-button>Wait</button>
-    <button mat-raised-button>Reset</button>
+    <button class="stopwatch-button" mat-raised-button (dblclick)="pauseTimer()">Wait</button>
+    <button class="stopwatch-button" mat-raised-button (click)="resetTimer()">Reset</button>
   </div>
 </div>
