@@ -1,0 +1,17 @@
+<div class="stopwatch">
+  <div class="stopwatch-label">
+    <span>{{ hours }}:</span>
+    <span>{{ minutes }}:</span>
+    <span>{{ seconds }}</span>
+  </div>
+  <div class="stopwatch-button-container">
+    <button mat-raised-button *ngIf="isStarted; else stop" (click)="startTimer()">
+      Start
+    </button>
+    <ng-template #stop>
+      <button mat-raised-button>Stop</button>
+    </ng-template>
+    <button mat-raised-button>Wait</button>
+    <button mat-raised-button>Reset</button>
+  </div>
+</div>
