@@ -21,6 +21,7 @@ export class StopwatchComponent implements OnInit, OnDestroy {
 
   startTimer() {
     this.isStarted = false;
+    this.isPaused = true;
     this.timer = this.timerService.observable$.subscribe(() => {
       this.num += 1;
       this.hours = Math.floor(this.num / 3600).toString();
@@ -58,13 +59,9 @@ export class StopwatchComponent implements OnInit, OnDestroy {
 
   pauseTimer() {
     if (!this.isStarted) {
-      if (this.isPaused) {
-        this.timerService.stop();
-        this.isPaused = false;
-      } else {
-        this.timerService.start();
-        this.isPaused = true;
-      }
+      this.timerService.stop();
+      this.isStarted = true;
+      this.isPaused = false;
     }
   }
 
