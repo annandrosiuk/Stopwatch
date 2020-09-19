@@ -8,6 +8,7 @@ import { MaterialModule } from './shared/modules/material/material.module';
 import { StopwatchComponent } from './stopwatch/stopwatch.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { DblclickService } from './services/dblclick.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
     BrowserAnimationsModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [DblclickService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

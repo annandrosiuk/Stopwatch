@@ -11,7 +11,7 @@
     <ng-template #stop>
       <button class="stopwatch-button" mat-raised-button (click)="stopTimer()">Stop</button>
     </ng-template>
-    <button class="stopwatch-button" mat-raised-button (dblclick)="pauseTimer()">Wait</button>
+    <button class="stopwatch-button" #waitBtn mat-raised-button>Wait</button>
     <button class="stopwatch-button" mat-raised-button (click)="resetTimer()">Reset</button>
   </div>
 </div>
