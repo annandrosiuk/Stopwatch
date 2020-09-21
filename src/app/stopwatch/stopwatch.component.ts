@@ -1,4 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  AfterViewInit,
+  ElementRef,
+} from '@angular/core';
+import { DblclickService } from '../services/dblclick.service';
 import { TimerService } from '../services/timer.service';
 
 @Component({
@@ -6,7 +14,7 @@ import { TimerService } from '../services/timer.service';
   templateUrl: './stopwatch.component.html',
   styleUrls: ['./stopwatch.component.scss'],
 })
-export class StopwatchComponent implements OnInit, OnDestroy {
+export class StopwatchComponent implements OnInit, OnDestroy, AfterViewInit {
   hours = '00';
   minutes = '00';
   seconds = '00';
@@ -14,8 +22,18 @@ export class StopwatchComponent implements OnInit, OnDestroy {
   isStarted = true;
   num = 0;
   timer;
+  @ViewChild('waitBtn', { read: ElementRef }) waitBtn: ElementRef;
 
-  constructor(private timerService: TimerService<any>) {}
+  constructor(
+    private timerService: TimerService<any>,
+    private dblclickService: DblclickService<any>,
+  ) {}
+
+  ngAfterViewInit() {
+    this.dblclickService
+      .detectDblclick(this.waitBtn.nativeElement)
+      .subscribe(() => this.pauseTimer());
+  }
 
   ngOnInit() {}
 
@@ -66,7 +84,7 @@ export class StopwatchComponent implements OnInit, OnDestroy {
   }
 
   resetTimer() {
-    if (!this.isStarted || !this.isPaused ) {
+    if (!this.isStarted || !this.isPaused) {
       this.stopTimer();
       this.startTimer();
     }

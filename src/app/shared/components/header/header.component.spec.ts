@@ -22,4 +22,15 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should have as title 'Stopwatch'`, () => {
+    const header = fixture.componentInstance;
+    expect(header.title).toEqual('Stopwatch');
+  });
+
+  it('should render title', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('span').textContent).toContain('Stopwatch');
+  });
 });
