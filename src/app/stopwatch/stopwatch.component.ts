@@ -66,7 +66,7 @@ export class StopwatchComponent implements OnInit, OnDestroy {
   }
 
   resetTimer() {
-    if (!this.isStarted) {
+    if (!this.isStarted || !this.isPaused ) {
       this.stopTimer();
       this.startTimer();
     }
